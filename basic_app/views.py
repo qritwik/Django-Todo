@@ -203,7 +203,7 @@ def edit(request,pk):
         data = Todo.objects.get(pk=pk)
 
         form = TodoForm(request.POST or None, instance=data)
-        return HttpResponse(form.errors)
+        # return HttpResponse(form.errors)
         if form.is_valid():
 
 
