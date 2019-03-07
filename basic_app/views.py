@@ -211,7 +211,7 @@ def edit(request,pk):
             obj.save()
 
             messages.success(request,('Item has been edited.'))
-            return redirect('basic_app:todos',pk=request.user.pk)
+            return HttpResponseRedirect(reverse('basic_app:todo',pk=request.user.pk))
 
     else:
         form = TodoForm()
