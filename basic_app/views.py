@@ -8,9 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 
-
 from rest_framework import generics
-
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
@@ -19,9 +17,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 
 from django.views.decorators.csrf import csrf_exempt
-
 from .serializers import TodoSerializer, UserSerializer
 
+#send email
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 # Create your views here.
@@ -41,6 +41,11 @@ def addTodo(request):
             print(request.user)
             obj.uid = request.user
             obj.save()
+            subject = 'New Todo: '+form1.cleaned_data['title']
+            message = 'You have created a new todo item which is scheduled for '+form1.cleaned_data['scheduled_time']
+            from_email = settings.EMAIL_HOST_USER
+            to_list = [obj.email]
+            send_mail(subject,message,from_email,to_list,fail_silently=True)
             messages.success(request,('Item has been added to list.'))
             return redirect('basic_app:todos',pk=request.user.pk)
 
