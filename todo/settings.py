@@ -35,7 +35,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
 SECRET_KEY = 'vtabrt^y7ko5vu2rb0gkar@z$6m9ncg1u&o+%ywq#nm&1uo1t2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -99,12 +99,28 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ddjq89ji8q83h7',
+        'USER': 'dbddijfzjgllrf',
+        'PASSWORD': 'cc7b98506efde632ef613bc2e4955c3f6b9b39ba525b53d41f38ef14d2476a54',
+        'HOST': 'ec2-174-129-236-21.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
+
+
 
 
 # Password validation
