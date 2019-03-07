@@ -199,24 +199,22 @@ def undone(request,pk):
 
 
 def edit(request,pk):
+    form = TodoForm()
+    data = Todo.objects.get(pk=pk)
 
     if request.method == 'POST':
-        data = Todo.objects.get(pk=pk)
-
         form = TodoForm(request.POST or None, instance=data)
         if form.is_valid():
             obj = form.save(commit=False)
-            print(request.user)
             obj.uid = request.user
             obj.save()
 
             messages.success(request,('Item has been edited.'))
-            return HttpResponseRedirect(reverse('basic_app:todo',pk=request.user.pk))
+            return redirect('basic_app:todos',pk=request.user.pk)
 
-    else:
-        form = TodoForm()
-        data = Todo.objects.get(pk=pk)
-        return render(request,'edit.html',{'form':form, 'data':data})
+
+
+    return render(request,'edit.html',{'form':form, 'data':data})
 
 
 
