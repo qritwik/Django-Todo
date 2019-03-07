@@ -44,7 +44,6 @@ def addTodo(request):
             subject = 'New Todo: '+form1.cleaned_data['title']
             message = 'You have created a new todo item which is scheduled for '+str(form1.cleaned_data['scheduled_time'])
             from_email = settings.EMAIL_HOST_USER
-
             to_list = [request.user.email]
             send_mail(subject,message,from_email,to_list,fail_silently=True)
             messages.success(request,('Item has been added to list.'))
@@ -204,8 +203,9 @@ def edit(request,pk):
         data = Todo.objects.get(pk=pk)
 
         form = TodoForm(request.POST or None, instance=data)
+        return HttpResponse(form.errors)
         if form.is_valid():
-            return HttpResponse("OK")
+
 
             obj = form.save(commit=False)
             print(request.user)
