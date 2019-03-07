@@ -203,9 +203,10 @@ def edit(request,pk):
     data = Todo.objects.get(pk=pk)
 
     if request.method == 'POST':
-        return HttpResponse("OK")
         form = TodoForm(request.POST or None, instance=data)
         if form.is_valid():
+            return HttpResponse("OK")
+
             obj = form.save(commit=False)
             obj.uid = request.user
             obj.save()
