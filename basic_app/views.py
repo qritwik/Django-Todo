@@ -212,9 +212,14 @@ def edit(request,pk):
             messages.success(request,('Item has been edited.'))
             return redirect('basic_app:todos',pk=request.user.pk)
 
+    context = {
+        'form':form,
+        'data':data
+    }
 
 
-    return render(request,'edit.html',{'form':form, 'data':data})
+
+    return render(request,'edit.html',context=context)
 
 
 
