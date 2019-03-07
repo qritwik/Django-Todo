@@ -4,35 +4,31 @@
   <head>
     <meta charset="utf-8">
     <title>Todo List</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href={% static "css/index.css" %}>
+  <link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css"/ >
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+
   </head>
-  <body style="background:#b0d69c;">
-
-    <nav class="navbar navbar-dark" style="background-color: #7cbb5a;">
-      <a class="navbar-brand" href="{% url 'basic_app:todos' request.user.pk %}">Todo List</a>
-      <a href="{% url 'basic_app:addTodo' %}" class="nav-item nav-link" style="color:#ffffff;">Add Todo</a>
+  <body style="background:#fcfcfc;">
 
 
-      <ul class="nav navbar-nav ml">
-        {% if user.is_authenticated %}
-        <li style="color:#ffffff;">Welcome, {{user.username}}</li>
-      </ul>
-      <ul class="nav navbar-nav ml-auto">
-        <li><a href="{% url 'basic_app:user_logout' %}" style="color:#ffffff;">Logout</a></li>
-      </ul>
 
-        {% else %}
-        <li><a href="{% url 'basic_app:user_login' %}" style="color:#ffffff;">Login</a></li>
-        {% endif %}
 
-      </ul>
+<div class="w3-bar w3-green w3-large">
+  <a href="{% url 'basic_app:todos' request.user.pk %}" class="w3-bar-item w3-button">Todo List</a>
+  <a href="{% url 'basic_app:addTodo' %}" class="w3-bar-item w3-button">Add Todo</a>
+  {% if user.is_authenticated %}
+  <a href="#" style="text-decoration:none" class="w3-bar-item">Welcome, {{user.username}}</a>
+  <a href="{% url 'basic_app:user_logout' %}" class="w3-bar-item w3-button w3-red w3-right">Logout</a>
+  {% endif %}
+</div>
 
-    </nav>
-
-    <div class="container">
+    <div class="w3-container">
       <br>
       {% block body_block %}
 
