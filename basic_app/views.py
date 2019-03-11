@@ -190,6 +190,7 @@ def undone(request,pk):
     data = Todo.objects.get(pk=pk)
     data.completed = False
     data.save()
+    messages.success(request,(str(data.title)+' status set to undone.'))
     return redirect('basic_app:todos',pk=request.user.pk)
 
 
