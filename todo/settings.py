@@ -188,3 +188,4 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 USE_L10N = True
+USE_TZ = False
