@@ -16,8 +16,8 @@
   <label class="w3-text-brown"><b>Todo Title: </b></label>
   {% render_field form.title class="form-control" value=data.title %}</p>
   <p>
-  <label class="w3-text-brown"><b>Scheduled Time: {{ data.scheduled_time|slice:":5" }}</b></label>
-  {% render_field form.scheduled_time class="form-control" id="datepicker" %}</p>
+  <label class="w3-text-brown"><b>Scheduled Time: </b></label>
+  {% render_field form.scheduled_time class="form-control" id="#datetimepicker1" value=data.scheduled_time %}</p>
   <p>
   <input class="w3-btn w3-green" type="submit" value="Edit Todo"></p>
 </form>
@@ -27,19 +27,17 @@
 <!---------------------------------------->
 
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script>
- $( function() {
-   $( "#datepicker" ).datepicker({
-   dateFormat: "yy-mm-dd"
- });
-
- } );
+ <script>
+   $(function () {
+     $('#datetimepicker1').datetimepicker({
+         format:'Y-m-d h:m:s'
+     });
+  });
  </script>
 
 {% endblock %}
