@@ -174,6 +174,7 @@ def done(request,pk):
     data = Todo.objects.get(pk=pk)
     data.completed = True
     data.save()
+    messages.success(request,(str(data.title)+' status set to done.'))
     return redirect('basic_app:todos',pk=request.user.pk)
 
 
